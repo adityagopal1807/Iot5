@@ -23,8 +23,12 @@ h1 {
 }
 
 label {
-    display: block;  /* Ensure each label takes a full line */
-    margin-bottom: 5px;  /* Add space below each option */
+    display: block;  /* Make each label a block element */
+    margin-bottom: 10px;  /* Add space below each option */
+}
+
+input[type="radio"] {
+    margin-right: 10px;  /* Add space between the radio button and the label */
 }
 
 button {
