@@ -302,6 +302,7 @@ const questions = [
 ];
 
 // Function to generate the quiz
+// Function to generate the quiz
 function generateQuiz() {
     const quizContainer = document.getElementById('quiz');
     questions.forEach((questionObj, index) => {
@@ -331,14 +332,23 @@ function showResults(event) {
     questions.forEach((questionObj, index) => {
         const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
         const correctAnswer = questionObj.answer;
+
+        // Create a result message for each question
+        let resultMessage = `<p>${questionObj.question} <br>`;
         
-        // Display correct answer
         if (selectedOption) {
             if (selectedOption.value === correctAnswer) {
                 score++;
+                resultMessage += `<span style="color: green;">Your answer: ${selectedOption.value} - Correct!</span>`;
+            } else {
+                resultMessage += `<span style="color: red;">Your answer: ${selectedOption.value} - Incorrect! Correct Answer: ${correctAnswer}</span>`;
             }
-            resultsContainer.innerHTML += `<p>${questionObj.question} <br> Correct Answer: ${correctAnswer}</p>`;
+        } else {
+            resultMessage += `<span style="color: orange;">You did not answer this question. Correct Answer: ${correctAnswer}</span>`;
         }
+
+        resultMessage += `</p>`;
+        resultsContainer.innerHTML += resultMessage;
     });
 
     // Alert total score
